@@ -36,7 +36,11 @@ instance : Category (Obj n) where
 -- samples
 def o5 : Obj 30 := Obj.mk 5 ⟨6, by simp⟩
 def o15 : Obj 30 := Obj.mk 15 ⟨2, by simp⟩
-def f315 : Mor o5 o15 := Mor.mk o5 o15 ⟨3, by simp⟩
+def o30 : Obj 30 := Obj.mk 30 ⟨1, by simp⟩
+
+def f515 : o5 ⟶ o15 := Mor.mk o5 o15 ⟨3, by simp⟩
+def f1530 : o15 ⟶ o30 := Mor.mk o15 o30 ⟨2, by simp⟩
+def f530 : o5 ⟶ o30 := f515 ≫ f1530
 
 example {n : Nat} : divides 1 n := ⟨n, by simp⟩
 
@@ -55,6 +59,8 @@ instance : Category Nat where
       => Mor.mk _ _ (divides_trans h1 h2)
 
 -- samples
-def f315 : Mor 3 15 := Mor.mk 3 15 ⟨5, by simp⟩
+def f315 : 3 ⟶ 15 := Mor.mk 3 15 ⟨5, by simp⟩
+def f1530 : 15 ⟶ 30 := Mor.mk 15 30 ⟨2, by simp⟩
+def f330 : 3 ⟶ 30 := f315 ≫ f1530
 
 end Infinit
