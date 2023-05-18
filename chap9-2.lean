@@ -6,6 +6,7 @@ open CategoryTheory
 inductive Mor : (a -> a -> Prop) -> a -> a -> Type where
   | mk x y : r x y -> Mor r x y
 
+set_option synthInstance.checkSynthOrder false
 instance [IsRefl a r] [IsTrans a r] : Category a where
   Hom x y := Mor r x y
   id x := Mor.mk x x (refl x)
